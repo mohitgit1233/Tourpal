@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="../../css/payment.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div>
+            <i class="fa-solid fa-bars" id="menu"></i>
+
+            <div class="site-logo">
+                <a href="/public/templates/customer/index.html"><img src="/public/images/tourpal-logo.svg"
+                        alt="logo"></a>
+            </div>
+            <div style="visibility: hidden">
+                sffasfss
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+                <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+                <!-- <li><a href="#">Notifications</a></li> -->
+                <li><a href="/public/templates/logout.html" id="logout">Log out - </a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Payment</h1>
+        <div id="confirmed_trip">
+        </div>
+        <div class="payment-card">
+            <p class="payment-heading">Payment info :</p>
+            <!-- <input type="text" value="VISA 1234 5678 0987 3211"></input> -->
+            <input type="text" placeholder="1111-2222-3333-4444" required></input>
+            <div class="payment-card-imp-detail">
+                <input type="text" placeholder="(mm/yy)" required></input>
+                <input type="password" placeholder="cvv" required></input>
+            </div>
+            <a href="/public/templates/customer/../booking-detail.html">
+                <!-- <button>Confirm payment</button> -->
+            </a>
+        </div>
+        
+        <input type="button" name ="PAY" class="confirm" value="Confirm payment" onclick = "userAction()" />
+   
+    <p class="outputPayment"></p>
+
+    </main>
+
+    <footer class="footer-section">
+        <p>&#169; 2022 Tourpal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="/public/js/base.js"></script>
+
+    <script src="/public/js/payment.js"></script>
+</body>
+
+</html>

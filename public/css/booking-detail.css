@@ -1,0 +1,105 @@
+@import "base.css";
+
+main{
+    display: grid;
+    grid-gap: 1rem;
+}
+
+#confirmed_trip,
+.payment-card{
+    box-shadow: 2px 2px 5px rgba(51, 49, 49, 0.61);
+    border-radius: 25px;
+    padding: 1.5rem .5rem 1.5rem .5rem;
+}
+
+#confirmed_trip ul span{
+    color: #151862;
+    font-weight: bolder;
+    
+}
+#confirmed_trip ul{
+    font-size: x-large;
+}
+
+#confirmed_trip ul li{
+    color: #ea2b49;
+    text-align: left;
+}
+
+
+.confirm{
+    width: 100%;
+    padding: 1.5rem;
+    color: white;
+    background-color: #ea2b49;
+    border: none;
+    border-radius: 25px;
+}
+
+.payment-card p{
+    font-weight: bolder;
+}
+
+@media screen and (min-width: 550px){
+
+    main{
+        width: 80%;
+        margin: auto;
+    }
+}
+
+
+@media screen and (min-width: 750px){
+
+    body{
+        display: unset;
+    }
+
+    main{
+        width: 60%;
+        margin-top: 2rem;
+        justify-items: center;
+    }
+
+    #confirmed_trip{
+        display: grid;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .payment-card > a,
+    .payment-card input,
+    .payment-heading{
+        width: 70%;
+        align-self: center;
+    }
+
+    .payment-card{
+        width: 100%;
+    }
+
+    /* .payment-card input{
+        width: fit-content;
+        flex-grow: 1;
+    } */
+
+    
+}
+
+@media screen and (min-width: 1000px){
+
+    #confirmed_trip,
+    .payment-card{
+        width: 80%;
+    }
+}
+
+
+@media screen and (min-width: 1200px){
+
+    #confirmed_trip,
+    .payment-card{
+        width: 60%;
+    }
+}
+

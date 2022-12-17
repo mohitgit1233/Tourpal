@@ -1,0 +1,20 @@
+{
+  "short_name": "Tourpal",
+  "name": "Tourpal",
+  "icons": [
+    {
+      "src": "icons/asset1.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/asset2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/public/templates/landing-page.html",
+  "display": "fullscreen",
+  "background_color": "#FF6F6F",
+  "theme_color": "#FF6F6F"
+}

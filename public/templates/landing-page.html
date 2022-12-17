@@ -1,0 +1,79 @@
+<!-- NOTE: This is the first page user sees -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourpal - Select User</title>
+
+    <link rel="manifest" href="/app.webmanifest">
+    <link rel="stylesheet" href="/public/css/login.css">
+
+    <script>
+        // does the browser support service workers?
+        if ('serviceWorker' in navigator) {
+          // fires when the service worker is ready
+          navigator.serviceWorker.ready.then(reg => {
+            // we have an active service worker working for us
+            console.log(`Service Worker ready (Scope: ${reg.scope})`);
+            // do something interesting, if you want...
+    
+          });
+          // then register our service worker
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(function (reg) {
+              // display a success message
+              console.log(`Service Worker Registration (Scope: ${reg.scope})`);
+            })
+            .catch(function (error) {
+              // display an error message
+              console.log(`Service Worker Error (${error})`);
+            });
+        } else {
+          // happens when the app isn't served over a TLS connection (HTTPS)
+          console.warn('Service Worker not available');
+        }
+      </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-logo">
+            <a href="/public/templates/landing-page.html"><img  src="/public/images/tourpal-logo.svg" alt="logo"></a>
+        </div>
+    </header>
+
+    <main class="main_landing">
+        <!-- <h1 class="main_heading">
+            Hi, Please pick one option 
+        </h1> -->
+        <div class="article_container">
+            <a href="/public/templates/login.html" onclick="hello('customer')">
+                <article class="article_customer">
+                    <img   src="/public/images/pexels-marta-wave-5875895.jpg" alt="">
+                    <div class="article-header">
+                        <h2 style="font-size: xx-large;"><span>Let's get</span> Started</h2>
+                    </div>
+                </article>
+            </a>
+            <a class="article-driver" href="/public/templates/login.html" onclick="hello('driver')">
+
+                <article class="article_customer">
+                    <!-- <img src="/public/images/v.jpg" alt=""> -->
+                    <!-- <div class="article-header"> -->
+                        <h2><span>or login as a</span> Driver</h2>
+                    <!-- </div> -->
+                </article>
+            </a>
+        </div>
+
+    </main>
+    <footer class="register-footer">
+        <p>@ 2022 Digital Architects. All Rights Reserved.</p>
+    </footer>
+    
+    
+    <script src="/public/js/landing-page.js"></script>
+</body>
+</html>

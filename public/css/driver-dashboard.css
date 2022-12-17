@@ -1,0 +1,62 @@
+@import "base.css";
+
+#upcomings, #history{
+    display: grid;
+    grid-gap: 1rem;
+}
+
+article ul {
+    /* border: 1px solid black; */
+    border-radius: 25px;
+    box-shadow: 0px 5px 3px rgba(128, 128, 128, 0.63);
+    margin: 0;
+    padding: 1rem;
+}
+
+article ul span{
+    color: #151862;
+    font-weight: bolder;
+}
+
+article ul li{
+    color: #EA2B49;
+}
+
+#history {
+    background-color: rgba(128, 128, 128, 0.257);
+    border-radius: 1rem;
+}
+
+@media screen and (min-width: 700px){
+
+    #upcomings, #history{
+        max-width: 80%;
+        margin: auto;
+    }
+}
+
+@media screen and (min-width: 1000px){
+
+     main{
+        grid-column: 1/-1;
+    }
+
+    /* #upcomings{
+        grid-template-columns: repeat(2,1fr );
+    } */
+
+    /* #upcomings h1,
+    #upcomings h3{
+        grid-column: 1/-1;
+    }  */
+}
+
+@media screen and (min-width: 1500px){
+
+    /* #upcomings{
+        grid-template-columns: repeat(3,1fr );
+    } */
+}
+
+
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/trips-info.css">
+
+</head>
+<body>
+    <div class="alert info" id="alert"  >
+        <span class="closebtn" onclick="this.parentElement.classList.remove('alert-show');">&times;</span> 
+        <span id="alert_body">
+            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+        </span>
+      </div>
+    <header class="site-header">
+        <div>
+            <i class="fa-solid fa-bars" id="menu"></i>
+
+            <div class="site-logo">
+                <a href="/public/templates/customer/index.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+            </div>
+            <div style="visibility: hidden">
+                sffasfss
+            </div>
+        </div>
+    <nav>
+        <ul>
+            <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+            <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+            <!-- <li><a href="#">Notifications</a></li> -->
+            <li><a href="/public/templates/logout.html" id="logout">Log out - </a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<main class="trips-info-main">
+    <div id="back">
+
+    </div>
+    <div class="trips-info-section">
+        <h3>
+            More Info
+        </h3>
+        <div id="confirmed_trip">
+        </div>
+        <button onclick="deleteData()">Cancel trip</button>
+    </div>
+</main>
+
+
+    <footer class="register-footer">
+        <p>@ 2022 Digital Architects. All Rights Reserved.</p>
+    </footer>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+<script src="/public/js/base.js"></script>
+<script>
+
+    const firebaseApp = firebase.initializeApp({
+        //Your own Firebase Credentials..
+        apiKey: "AIzaSyBT-dRzb2pbR9exsiiIJtoILkf5ck3X0pg",
+        authDomain: "tourpal-e680e.firebaseapp.com",
+        databaseURL: "https://tourpal-e680e-default-rtdb.firebaseio.com",
+        projectId: "tourpal-e680e",
+        storageBucket: "tourpal-e680e.appspot.com",
+        messagingSenderId: "648603206107",
+        appId: "1:648603206107:web:c425541113bc713a2be7fe",
+        measurementId: "G-G9LL7MBNG0"
+      });
+      const db = firebaseApp.firestore();
+      const urlParams = new URLSearchParams(window.location.search);
+
+      var deleteData = () => {
+        db.collection('trip').doc(urlParams.get('id')).delete()
+        .then(() => {
+        //   history.back();
+            window.location.href = `/public/templates/customer/trips.html`
+
+            customFlash('Data Deleted')
+        })
+        .catch((err) =>{
+            customFlash(err.toString())
+
+            console.log(err)
+        })
+    }
+      const pdiv = document.createElement("div")
+        
+      const trip_id = urlParams.get('id');
+
+      const snapshot = db
+      .collection('trip')
+      .doc(trip_id).get().then((querySnapshot)=>{
+        const data = querySnapshot.data();
+        console.log(data.experience_selected)
+
+        db
+        .collection('experience')
+        .doc(data.experience_selected.id).get().then((querySnapshot2)=>{
+
+            db
+            .collection('driver')
+            .doc(data.driver.id).get().then((querySnapshot3)=>{
+                console.log(querySnapshot3)
+                console.log(querySnapshot3.data())
+                pdiv.innerHTML = `
+                <ul>
+
+                    <li><span>Id:</span> ${trip_id}</li>
+                    <li><span>Booked Date:</span> ${data.bookdate.toDate()}</li>
+                    <li><span>Depart Time:</span> ${data.startdate.toDate()}</li>
+        <li><span>End Time:</span> ${data.enddate.toDate()}</li>
+        <li><span>Experience:</span> ${querySnapshot2.data().name}</li>
+        <li><span>Driver:</span> ${querySnapshot3.data().name}</li>
+        
+        
+    </ul>
+    `
+        })
+    })
+      });
+
+   confirmed_trip.appendChild(pdiv)
+   const pdiv2 = document.createElement("div")
+   pdiv2.innerHTML = `<a href="#" onclick="history.back()" ><i class="fas fa-arrow-left"></i></a>`
+   back.appendChild(pdiv2)
+
+</script>
+</html>

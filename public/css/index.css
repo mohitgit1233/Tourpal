@@ -1,0 +1,312 @@
+@import "base.css";
+
+/* @import "login.css"; */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    font-family: 'Comfortaa', cursive;;
+}
+
+header{
+    border-bottom: 1px solid #ccc;
+    /* box-shadow: 1px 1px ; */
+}
+
+.site-logo{
+    text-align: center;
+    padding: 1rem;
+    margin: .1rem;
+}
+
+.site-logo img{
+    width:50%;
+}
+
+.main_heading{
+    padding:1rem;
+    text-align: center;
+    font-size: 25px;
+}
+
+main{
+    padding: 2rem;
+}
+
+main p,
+main h2{
+    padding: 2% 0;
+}
+
+img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* extra reset */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: red;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+/* ========= */
+
+header > div:nth-of-type(1) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* align-items: center; */
+}
+
+nav ul {
+    /* display: flex; */
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+    grid-gap: 1rem;
+    text-align: center;
+}
+
+header img {
+    /* text-align: center; */
+    display: block;
+    margin: auto;
+}
+header nav {
+    /* FIXME: */
+    /* transition: all 1s ease-in; */
+}
+
+.hide {
+    display: none;
+}
+
+form {
+    width: 100%;
+    margin: auto;
+}
+
+form > div {
+    display: flex;
+    border: 1px solid grey;
+    border-radius: .4rem;
+}
+
+form div input{
+    flex: 1 0 50%;
+    border: none;
+    border-left: 1px solid black;
+    max-width: 50%;
+}
+
+form div label{
+    flex: 1 0 50%;
+    text-align: center;
+}
+
+#add {
+    background-color:  rgb(235,60,86);
+    border: 2px solid #EA2B49;
+    border-radius: 1.5rem;
+    width: 100%;
+    color: white;
+}
+
+#add:hover{
+    background-color: white;
+    color: #EA2B49;
+    border: 2px solid #EA2B49;
+}
+
+#menu {
+    padding: 1rem;
+}
+form > div:nth-last-of-type(1) {
+    border: none;
+}
+.extra_img {
+    display: none;
+}
+
+/* Form */
+
+main > form > div{
+    margin-bottom: 3%;
+}
+
+main > form > div > label,
+main > form > div > input{
+    padding: .5rem;
+}
+
+main form div button{
+    padding: .5rem;
+}
+
+label{
+    color: #151862;
+    font-weight: bolder;
+}
+
+input{
+    font-weight: bold;
+    color: #ea2b49;
+}
+
+::-webkit-calendar-picker-indicator{
+    color: #ea2b49;
+}
+
+.footer-section{
+    height: fit-content;
+    padding: .7rem;
+}
+
+.footer-section p{
+    padding: 0;
+}
+
+@media screen and (min-width: 700px){
+
+    main{
+        max-width: 60%;
+        margin: auto;
+        
+    }
+}
+
+
+
+@media screen and (min-width: 1000px) {
+
+    
+    nav ul {
+        /* display: flex; */
+        display: grid;
+        /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
+        grid-gap: 1rem;
+        text-align: center;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: fit-content;
+    }
+
+    header > div:nth-of-type(1) i  {
+        display: none;
+    }
+
+    header ul {
+        display: flex;
+        align-items: center;
+    }
+    
+    .hide {
+        display: block;    
+    }
+    
+    main {
+        max-width: 80%;
+        position: relative;
+        left: 6rem;
+        height: fit-content;
+        background-color: white;
+        border-radius: 2rem;
+        align-self: center;
+        box-shadow: -3px 5px 3px rgba(128, 128, 128, 0.247);
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header, footer {
+        grid-column: 1/-1;
+    }
+
+    footer{
+        align-self: end;
+    }
+
+    .extra_img {
+        display: block;
+        /* width: 20rem; */
+        margin-left: -7rem;
+        margin-right: 7rem;
+    }
+    .extra_img img {
+        border-radius: 2rem;
+    }
+
+}
+
+/* ###autocomplete */
+* { box-sizing: border-box; }
+/* body {
+  font: 16px Arial;
+} */
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  /* display: inline-block; */
+}
+/* input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+} */
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}

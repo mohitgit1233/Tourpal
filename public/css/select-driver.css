@@ -1,0 +1,106 @@
+@import "base.css";
+
+#driver_list img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+
+label {
+    text-transform: capitalize;
+}
+
+/* Main section */
+
+main h2{
+    font-weight: bolder;
+}
+
+main #driver_list{
+    display: grid;
+    margin-top: 2rem;
+    grid-gap: 1rem;
+}
+
+main img{
+    margin: auto;
+}
+
+#driver_list > div > div,
+#driver_list > div > label,
+#driver_list > div > button{
+    margin-top: .5rem;
+}
+
+#driver_list{
+    margin-bottom: 10%;
+}
+
+#driver_list > div{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: rgb(250, 246, 246);
+    border-radius: 25px;
+    padding: 1rem 2%;
+    text-align: center;
+}
+
+#driver_list > div > label{
+    font-weight: bolder;
+}
+
+#driver_list > div > button{
+    width: 100%;
+    border-radius: 30px;
+    padding: .5rem;
+    border: none;
+    background-color: #EA2B49;
+    color: white;
+    font-weight: bold;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 750px){
+
+    .main-nav{
+        max-width: 70%;
+        margin: auto;
+    }
+
+    #driver_list{
+        grid-template-columns: repeat(2,1fr );
+    }
+
+    #driver_list h2{
+        grid-column: 1/-1;
+    }
+}
+
+@media screen and (min-width: 1000px){
+
+    .main-nav{
+        max-width: 50%;
+    }
+
+    #driver_list{
+        grid-template-columns: repeat(3,1fr );
+    }
+}
+
+@media screen and (min-width: 1300px){
+
+    .main-nav{
+        max-width: 40%;
+    }
+}
+
+@media screen and (min-width: 1500px){
+
+    #driver_list{
+        grid-template-columns: repeat(4,1fr );
+    }
+}
+
+
+

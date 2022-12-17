@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/trips.css">
+
+</head>
+<body>
+    <header class="site-header">
+        <div>
+            <i class="fa-solid fa-bars" id="menu"></i>
+
+            <div class="site-logo">
+                <a href="/public/templates/customer/index.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+            </div>
+            <div style="visibility: hidden">
+                sffasfss
+            </div>
+        </div>
+    <nav>
+        <ul>
+            <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+            <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+            <!-- <li><a href="#">Notifications</a></li> -->
+            <li><a href="/public/templates/logout.html" id="logout">Log out - </a></li>
+
+        </ul>
+    </nav>
+</header>
+<main class="trips-section">
+
+    <h1 class="trips-heading">Trips</h1>
+    <div id="body1">
+        <div class="upcomings" id="upcomings">
+            <h3>Upcomings Trips</h3>
+
+        </div>
+
+        <div class="history" id="history">
+            <h3>history</h3>
+
+        </div>
+
+    </div>
+    
+</main>
+    <footer class="register-footer">
+        <p>@ 2022 Digital Architects. All Rights Reserved.</p>
+    </footer>
+</body>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+<script src="/public/js/base.js"></script>
+<script>
+    const firebaseApp = firebase.initializeApp({
+        //Your own Firebase Credentials..
+        apiKey: "AIzaSyBT-dRzb2pbR9exsiiIJtoILkf5ck3X0pg",
+        authDomain: "tourpal-e680e.firebaseapp.com",
+        databaseURL: "https://tourpal-e680e-default-rtdb.firebaseio.com",
+        projectId: "tourpal-e680e",
+        storageBucket: "tourpal-e680e.appspot.com",
+        messagingSenderId: "648603206107",
+        appId: "1:648603206107:web:c425541113bc713a2be7fe",
+        measurementId: "G-G9LL7MBNG0"
+      });
+      const db = firebaseApp.firestore();
+      const body= document.querySelector("#body1")
+
+      let i = 0
+      const categoryDocRef = db
+      .collection('customer')
+      .doc(sessionStorage.getItem("logged_in_uid"));
+    console.log(categoryDocRef)
+    let future = new Date();
+
+      //TODO: filter according to logged in user onlyyyyyyyyyyyyyyyyyyyyyyyyyy
+      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '>=', future).orderBy("startdate", "asc").get().then((querySnapshot) => {
+          let links= document.querySelectorAll(".entry_link")
+          let myArray = Array.from(links)
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+
+            db
+            .collection('experience')
+            .doc(data.experience_selected.id).get().then((querySnapshot2)=>{
+
+
+                db
+                .collection('driver')
+                .doc(data.driver.id).get().then((querySnapshot3)=>{
+
+
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+              //body.innerHTML+=`<br>`
+              //body.innerHTML+=`${doc.data().destination}`
+              //body.innerHTML+=`${doc.id}`
+              const pdiv = document.createElement("article")
+              let dtt = doc.data().startdate.toDate().toString().split(' ', 4).join(' ');
+              // TODO:  ID TO SOME INFO
+              pdiv.innerHTML = `
+              <h2>
+                  
+
+                  <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link"   >${dtt}</a>
+                  <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link"  style="display: inline" >${querySnapshot2.data().name}</a>
+
+
+
+            </h2>
+
+
+
+            <div class="feature-image"><img src="data:image/jpeg;base64,${querySnapshot2.data().picture}" alt=""></div>
+              `
+              upcomings.appendChild(pdiv)
+              console.log(doc.id)
+              //myArray[0].innerHTML = "assad"
+              i++;
+
+
+        })
+
+            })
+
+
+            });
+      });
+      db.collection("trip").where('customer', '==', categoryDocRef).where('startdate', '<', future).orderBy("startdate", "desc").get().then((querySnapshot) => {
+        let links= document.querySelectorAll(".entry_link")
+        let myArray = Array.from(links)
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+
+            db
+            .collection('experience')
+            .doc(data.experience_selected.id).get().then((querySnapshot2)=>{
+
+                db
+                .collection('driver')
+                .doc(data.driver.id).get().then((querySnapshot3)=>{
+
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            //body.innerHTML+=`<br>`
+            //body.innerHTML+=`${doc.data().destination}`
+            //body.innerHTML+=`${doc.id}`
+            const pdiv = document.createElement("article")
+            let dtt = doc.data().startdate.toDate().toString().split(' ', 4).join(' ');
+
+            pdiv.innerHTML = `
+            <h2>
+                
+                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link"   >${dtt}</a>
+                <a href="/public/templates/customer/trips-info.html?id=${doc.id}" class="entry_link"  style="display: inline" >${querySnapshot2.data().name}</a>
+
+
+
+
+          </h2>
+          <div class="feature-image"><img src="data:image/jpeg;base64,${querySnapshot2.data().picture}" alt=""></div>
+
+            `
+            document.querySelector("#history").appendChild(pdiv)
+            
+            console.log(doc.id)
+            //myArray[0].innerHTML = "assad"
+            i++;
+
+        })
+
+
+        });
+          });
+    });
+</script>
+</html>

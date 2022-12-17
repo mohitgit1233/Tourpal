@@ -1,0 +1,65 @@
+<!-- NOTE: This is the page user sees after landing page on clicking signin button -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/public/css/login.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-logo">
+            <a href="landing-page.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+        </div>
+    </header>
+    <div class="alert info" id="alert"  >
+        <span class="closebtn" onclick="this.parentElement.classList.remove('alert-show');">&times;</span> 
+        <span id="alert_body">
+            <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+        </span>
+      </div>
+    <main>
+        <div class="hero-image_login">
+            <img src="/public/images/v.jpg" alt="">
+        </div>
+        <div class="form_wrapper_register">
+            <div class="register_form">
+                <div class="sign_in">
+                    <h2>Sign In</h2>
+                <h4 id="abc">New User?   <a href="register.html" >Create an account</a></h4>
+                </div>
+    
+    
+                <form action="#" id="temp1">
+                    <div><input name="email" type="email" id="email1" placeholder="email" required></div>
+                    <br>
+                    <div><input name="password" type="password" minlength="8" id="password1" placeholder="password" required></div>
+                        <!-- <input type="submit" value="Add" id="add"> -->
+                        <button  id="signin">Sign-In</button>
+                </form>
+            </div>
+        
+        <div class="register_form_image">
+            <img src="/public/images/t.jpg" alt="">
+        </div>
+    </div>
+ 
+    </main>
+    <footer class="register-footer">
+        <p>@ 2022 Digital Architects. All Rights Reserved.</p>
+    </footer>
+    
+    
+    
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+    <script src="/public/js/login.js"></script>
+</body>
+</html>

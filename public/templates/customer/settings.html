@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/settings.css">
+
+</head>
+<body>
+    <header class="site-header">
+        <div>
+            <i class="fa-solid fa-bars" id="menu"></i>
+
+            <div class="site-logo">
+                <a href="/public/templates/customer/index.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+            </div>
+            <div style="visibility: hidden">
+                sffasfss
+            </div>
+        </div>
+    <nav>
+        <ul>
+            <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+            <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+            <!-- <li><a href="#">Notifications</a></li> -->
+            <li><a href="/public/templates/logout.html" id="logout">Log out - </a></li>
+
+        </ul>
+    </nav>
+</header>
+    <div class="form_wrapper_register">
+        <div class="register_form">
+            <h1 class="register-page-heading">Your account</h1>
+
+
+            <form action="#" id="temp1">
+
+                <div class="form-container">
+                    <div id="outboximgpre"><img src="/public/images/pexels-klaus-nielsen-6294465.jpg" alt=""></div>
+                    <div class="p1">
+                        <!--<label for="firstname">firstname</label>--><br>
+                        <label for="">Name</label>
+                        <input name="fullname" type="text" id="fullname"
+                            required placeholder="Full name">
+                    </div>
+                    <div>
+                        <!--<label for="email">Email</label>--><br>
+                        <label for="">Email</label>
+                    
+                        <input name="email" type="email" id="email" required
+                            placeholder="Email">
+                    </div>
+                    <div>
+                        <!--<label for="phone">phone</label>--><br>
+                        <label for="">Phone</label>
+                    
+                        <input name="phone" type="text" minlength="10" maxlength="10" id="phone" required
+                            placeholder="Phone">
+                    </div>
+                    <div><br>
+                        <label for="">Change Picture</label>
+                    
+                        <input name="picture" type="file" id="picture">
+                    </div>
+                    
+                        <!-- <div id="outboximg"></div> -->
+                        <div>
+                            <!-- <input type="submit" value="Add" id="add"> -->
+                            <button id="signup">Update Account</button> <br>
+                        </div>
+                </div>
+                </form>
+        </div>
+
+    </div>
+
+    <footer class="register-footer">
+        <p>@ 2022 Digital Architects. All Rights Reserved.</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="/public/js/base.js"></script>
+
+    <script src="/public/js/settings.js"></script>
+</body>
+</html>

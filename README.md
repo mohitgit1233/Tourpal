@@ -1,2 +1,1 @@
-# Tourpal
-Project Tourpal
+# tourpal

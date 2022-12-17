@@ -1,0 +1,101 @@
+<!-- NOTE: This is the page user(customer) sees after login/registration (home/welcome screen) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Tourpal</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+</head>
+<body>
+    
+        <header class="site-header">
+            <div>
+                <i class="fa-solid fa-bars" id="menu"></i>
+
+                <div class="site-logo">
+                    <a href="/public/templates/customer/index.html"><img src="/public/images/tourpal-logo.svg" alt="logo"></a>
+                </div>
+                <div style="visibility: hidden">
+                    sffasfss
+                </div>
+            </div>
+        <nav>
+            <ul>
+                <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+                <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+                <!-- <li><a href="#">Notifications</a></li> -->
+                <li><a href="/public/templates/logout.html" id="logout"><i class="fa fa-user" aria-hidden="true"></i> Log out - </a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>
+            Pick your place and time, we will give you a tourpal
+        </h1>
+        <p>
+            Our tourpals are experiences local drivers, who will drive and guide you through best experiences!
+        </p>
+
+        <h2>Book a trip</h2>
+
+        <form action="#" id="temp1">
+            <!-- <div><label for="">City</label><br><input name="dest" type="text" id="fname" required></div> -->
+            <div class="autocomplete">
+                <label for="">City</label><br>
+                <input id="fname" type="text" name="dest" required>
+              </div>
+            <div><label for="">Depart Date Time</label><br><input name="sdate" type="datetime-local" id="c100" onchange="DateCheck()" required></div>
+            <div><label for="">Finish Date Time</label><br><input name="edate" type="datetime-local" id="c200" onchange="DateCheck()" required></div>
+            <!-- <div><label for="">Duration</label><br><input type="number" id="f100" required></div> -->
+            <div><label for="">Number of people</label><br><input name="guest_count" type="number" id="p100" min="1" required></div>
+            <div>
+                <!-- <input type="submit" value="Add" id="add"> -->
+                <button type="button" id="add">Search</button>
+            </div>
+        </form>
+        <script>
+                
+            function DateCheck() {
+                var UserStartDate = document.getElementById("c100").value;
+                var UserEndDate = document.getElementById("c200").value;
+                var ToDate = new Date();
+
+                if (new Date(UserStartDate).getTime() <= ToDate.getTime() ) {
+                    alert("You cannot choose a date from the past");
+                    document.getElementById("c100").value = '';
+                    return false;
+                }
+                if (new Date(UserEndDate).getTime() <= ToDate.getTime()) {
+                    alert("You cannot choose a date from the past");
+                    document.getElementById("c200").value = '';
+                    //return false;
+                    alert(new Date(UserEndDate).getTime()) 
+                }
+                else if(new Date(UserEndDate).getTime() <= new Date(UserStartDate).getTime()){
+
+                    alert("End date cannot be before start date");
+                    document.getElementById("c200").value = '';
+                    return false;
+                    
+                }
+                
+                
+                return true;
+}
+        </script>
+
+    </main>
+    <div class="extra_img">
+        <img src="/public/images/pexels-peter-fazekas-1386649.jpg" alt="">
+    </div>
+    <footer class="footer-section">
+        <p>&#169; 2022 Tourpal. All Rights Reserved.</p>
+    </footer>
+    <script src="/public/js/base.js"></script>
+    <script src="/public/js/index.js"></script>
+</body>
+</html>

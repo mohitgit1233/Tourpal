@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="../css/booking-detail.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div>
+            <i class="fa-solid fa-bars" id="menu"></i>
+
+            <div class="site-logo">
+                <a href="/public/templates/customer/index.html"><img src="/public/images/tourpal-logo.svg"
+                        alt="logo"></a>
+            </div>
+            <div style="visibility: hidden">
+                sffasfss
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/public/templates/customer/trips.html">Trips</a></li>
+                <li><a href="/public/templates/customer/settings.html">Account Settings</a></li>
+                <!-- <li><a href="#">Notifications</a></li> -->
+                <li><a href="/public/templates/logout.html" id="logout">Log out - </a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 style="text-decoration: underline;">Booking Confirmed </h1>
+        <img style=" padding:0; width: 200px;" src="../../icons/success.gif" alt="">
+        <div id="confirmed_trip">
+        </div>
+        <a href="../templates/customer/trips.html">
+        <input style="  width: 100%;
+        padding: 1.5rem;
+        color: white;
+        background-color: #ea2b49;
+        border: none;
+        border-radius: 25px;" type="button"  value="View Trips">
+    </a>
+    </main>
+
+    <footer class="footer-section">
+        <p>&#169; 2022 Tourpal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="/public/js/base.js"></script>
+
+    <script src="/public/js/booking-detail.js"></script>
+</body>
+
+</html>
